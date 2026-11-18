@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday BILISE! 🎉 ✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        handwriting: ['Dancing Script', 'cursive'],
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        deepEmerald: '#113F37',
+                        emeraldHover: '#0B2B26',
+                        emeraldLight: '#E8F3F1',
+                        warmCream: '#FAF6F0',
+                        champagneGold: '#C59B27',
+                        goldLight: '#F4EBD0',
+                        charcoal: '#1A2421',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-18px) rotate(3deg)' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: 0.3, transform: 'scale(0.8)' },
+                            '50%': { opacity: 1, transform: 'scale(1.2)' },
+                        },
+                        flicker: {
+                            '0%, 100%': { opacity: 1, transform: 'scale(1) rotate(-1deg)' },
+                            '50%': { opacity: 0.85, transform: 'scale(0.92) rotate(1.5deg)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(17, 63, 55, 0.25)' },
+                            '50%': { boxShadow: '0 0 30px rgba(197, 155, 39, 0.45)' },
+                        },
+                        popIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8) translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        twinkle: 'twinkle 3s ease-in-out infinite',
+                        flicker: 'flicker 0.35s ease-in-out infinite',
+                        pulseGlow: 'pulseGlow 2s infinite',
+                        popIn: 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #FAF6F0;
+            background-image: 
+                radial-gradient(#D9CFC1 1px, transparent 1px),
+                linear-gradient(to right, rgba(17, 63, 55, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px, 40px 40px;
+            overflow-x: hidden;
+            color: #1A2421;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF6F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B8D4CE;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #113F37;
+        }
+
+        .flame {
+            background: radial-gradient(ellipse at bottom, #ffffff 0%, #F4D03F 50%, #C59B27 100%);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 14px #F4D03F, 0 0 25px #C59B27;
+        }
+
+        .smoke {
+            animation: rise 2s ease-out forwards;
+        }
+
+        @keyframes rise {
+            0% { opacity: 0.8; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-35px) scale(2.8); }
+        }
+
+        .polaroid-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .polaroid-card:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.03) !important;
+            z-index: 30;
+            box-shadow: 0 20px 30px -10px rgba(17, 63, 55, 0.22);
+        }
+
+        .balloon-pop {
+            animation: explode 0.3s forwards ease-out;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .watermark-column {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            color: rgba(17, 63, 55, 0.045);
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-charcoal min-h-screen relative flex flex-col justify-between selection:bg-deepEmerald selection:text-warmCream">
+
+    <!-- Watermark Background Accents -->
+    <div class="fixed top-0 left-2 bottom-0 pointer-events-none z-0 flex flex-col justify-around text-4xl sm:text-6xl watermark-column leading-none">
+        <div>BB</div><div>BB</div><div>BB</div><div>BB</div><div>BB</div><div>BB</div><div>BB</div>
+    </div>
+
+    <!-- Background Particle Canvas -->
+    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Sticky Glass Header Control Bar -->
+    <header class="sticky top-0 z-40 w-full bg-warmCream/85 backdrop-blur-md border-b border-deepEmerald/10">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#top" class="flex items-center space-x-2 text-deepEmerald font-serif font-bold text-lg tracking-wider">
+                <span class="text-champagneGold">✦</span>
+                <span>BILISE • NOV 19</span>
+            </a>
+
+            <!-- Quick Section Jump Nav -->
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-extrabold uppercase tracking-widest text-deepEmerald/75">
+                <a href="#cake" class="hover:text-deepEmerald transition-colors">Cake</a>
+                <a href="#memories" class="hover:text-deepEmerald transition-colors">Gallery</a>
+                <a href="#reasons" class="hover:text-deepEmerald transition-colors">Impressions</a>
+                <a href="#compliments" class="hover:text-deepEmerald transition-colors">Compliments</a>
+                <a href="#letter" class="hover:text-deepEmerald transition-colors">Note</a>
+            </nav>
+
+            <div class="flex items-center space-x-2.5">
+                <button id="confettiBtn" onclick="fireConfetti()" class="bg-deepEmerald hover:bg-emeraldHover text-warmCream px-5 py-2.5 rounded-full shadow-lg transition-all duration-300 flex items-center space-x-2 font-bold text-xs uppercase tracking-wider hover:scale-105 active:scale-95 cursor-pointer border border-champagneGold/40">
+                    <i class="fa-solid fa-wand-magic-sparkles text-champagneGold"></i>
+                    <span>Celebrate!</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Balloons Container -->
+    <div class="fixed inset-0 pointer-events-none z-10 overflow-hidden" id="balloonContainer"></div>
+
+    <!-- Main Content Grid -->
+    <main id="top" class="relative z-20 w-full max-w-5xl mx-auto px-4 py-12 flex-grow flex flex-col items-center justify-center space-y-28">
+
+        <!-- 1. HERO GREETING SECTION -->
+        <section class="w-full flex flex-col items-center text-center space-y-7 relative pt-4">
+            
+            <div class="flex items-center space-x-3 text-deepEmerald text-sm uppercase tracking-[0.25em] font-extrabold bg-emeraldLight/70 px-5 py-2 rounded-full border border-deepEmerald/15">
+                <span class="text-champagneGold">❖</span>
+                <span>Happy Birthday & Great Meeting You</span>
+                <span class="text-champagneGold">❖</span>
+            </div>
+
+            <div class="relative inline-block">
+                <h1 class="text-6xl sm:text-7xl md:text-9xl font-serif font-bold text-deepEmerald leading-none tracking-tight">
+                    Happy<br/>
+                    <span class="font-serif font-extrabold text-deepEmerald">Birthday</span>
+                </h1>
+
+                <div class="absolute -top-6 -right-8 sm:-top-8 sm:-right-12 w-14 h-14 sm:w-20 sm:h-20 animate-float">
+                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                        <circle cx="50" cy="50" r="16" fill="#C59B27" />
+                        <path d="M50 10 C45 30 55 30 50 10 M50 90 C45 70 55 70 50 90 M10 50 C30 45 30 55 10 50 M90 50 C70 45 70 55 90 50 M22 22 C37 34 43 28 22 22 M78 78 C63 66 57 72 78 78 M22 78 C37 66 43 72 22 78 M78 22 C63 34 57 28 78 22" stroke="#113F37" stroke-width="11" stroke-linecap="round" fill="none" />
+                        <circle cx="50" cy="50" r="13" fill="#FAF6F0" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="pt-2 space-y-3">
+                <h2 class="font-handwriting text-7xl md:text-9xl text-deepEmerald font-bold transform -rotate-2">
+                    BILISE
+                </h2>
+                <p class="text-xs sm:text-sm text-deepEmerald/80 font-semibold tracking-widest uppercase mt-3 max-w-lg mx-auto leading-relaxed">
+                    SO GLAD OUR PATHS CROSSED RECENTLY • WISHING YOU A WONDERFUL BIRTHDAY AND A GREAT YEAR AHEAD
+                </p>
+            </div>
+
+            <div class="mt-4 inline-flex items-center space-x-4 border-y-2 border-deepEmerald py-2.5 px-8 bg-warmCream shadow-sm">
+                <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-deepEmerald">THURSDAY</span>
+                <span class="bg-deepEmerald text-warmCream font-black text-2xl px-4 py-1 rounded-md border border-champagneGold">19</span>
+                <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-deepEmerald">NOVEMBER</span>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE CAKE SECTION -->
+        <section id="cake" class="w-full flex flex-col items-center justify-center relative scroll-mt-24">
+            <div class="text-center mb-6">
+                <span class="text-xs uppercase tracking-[0.2em] text-champagneGold font-extrabold">Make Your Birthday Wish</span>
+                <h3 class="text-3xl font-serif text-deepEmerald font-bold tracking-wide mt-1">Blow Out The Candles 🕯️</h3>
+                <p id="cakeInstruction" class="text-xs text-deepEmerald/80 font-semibold uppercase tracking-wider mt-2">
+                    Click each candle to blow it out or tap "Blow Out Candles"
+                </p>
+            </div>
+
+            <div class="relative w-64 h-64 md:w-80 md:h-80 flex flex-col items-center justify-end">
+                <div class="flex justify-center space-x-6 z-10 -mb-2" id="candlesGroup">
+                    <div class="candle cursor-pointer group flex flex-col items-center transition-transform hover:scale-110" onclick="extinguishCandle(this)">
+                        <div class="flame-container relative w-4 h-6 flex justify-center items-end">
+                            <div class="flame w-3.5 h-5 animate-flicker"></div>
+                        </div>
+                        <div class="w-2.5 h-12 bg-gradient-to-t from-deepEmerald via-emeraldLight to-warmCream rounded-t-sm shadow-sm"></div>
+                    </div>
+                    <div class="candle cursor-pointer group flex flex-col items-center transition-transform hover:scale-110" onclick="extinguishCandle(this)">
+                        <div class="flame-container relative w-4 h-6 flex justify-center items-end">
+                            <div class="flame w-3.5 h-5 animate-flicker" style="animation-delay: 0.15s"></div>
+                        </div>
+                        <div class="w-2.5 h-14 bg-gradient-to-t from-champagneGold via-goldLight to-warmCream rounded-t-sm shadow-sm"></div>
+                    </div>
+                    <div class="candle cursor-pointer group flex flex-col items-center transition-transform hover:scale-110" onclick="extinguishCandle(this)">
+                        <div class="flame-container relative w-4 h-6 flex justify-center items-end">
+                            <div class="flame w-4 h-6 animate-flicker" style="animation-delay: 0.3s"></div>
+                        </div>
+                        <div class="w-3 h-16 bg-gradient-to-t from-deepEmerald via-champagneGold to-warmCream rounded-t-sm shadow-sm"></div>
+                    </div>
+                    <div class="candle cursor-pointer group flex flex-col items-center transition-transform hover:scale-110" onclick="extinguishCandle(this)">
+                        <div class="flame-container relative w-4 h-6 flex justify-center items-end">
+                            <div class="flame w-3.5 h-5 animate-flicker" style="animation-delay: 0.05s"></div>
+                        </div>
+                        <div class="w-2.5 h-14 bg-gradient-to-t from-champagneGold via-goldLight to-warmCream rounded-t-sm shadow-sm"></div>
+                    </div>
+                    <div class="candle cursor-pointer group flex flex-col items-center transition-transform hover:scale-110" onclick="extinguishCandle(this)">
+                        <div class="flame-container relative w-4 h-6 flex justify-center items-end">
+                            <div class="flame w-3.5 h-5 animate-flicker" style="animation-delay: 0.2s"></div>
+                        </div>
+                        <div class="w-2.5 h-12 bg-gradient-to-t from-deepEmerald via-emeraldLight to-warmCream rounded-t-sm shadow-sm"></div>
+                    </div>
+                </div>
+
+                <div class="w-48 md:w-56 h-16 bg-gradient-to-r from-emeraldLight via-warmCream to-emeraldLight rounded-t-2xl border-b-4 border-deepEmerald/30 shadow-inner flex items-center justify-around px-4 relative z-0 border-t-2 border-x-2 border-deepEmerald/20">
+                    <span class="text-deepEmerald">🌿</span>
+                    <span class="text-champagneGold">✨</span>
+                    <span class="text-deepEmerald">🌿</span>
+                </div>
+                <div class="w-56 md:w-64 h-16 bg-gradient-to-r from-deepEmerald via-[#1A564B] to-deepEmerald border-b-4 border-champagneGold/60 shadow-md flex items-center justify-around px-6 text-warmCream">
+                    <span class="text-champagneGold">✨</span>
+                    <span class="font-handwriting text-3xl font-bold text-warmCream">BILISE</span>
+                    <span class="text-champagneGold">✨</span>
+                </div>
+                <div class="w-64 md:w-72 h-20 bg-gradient-to-r from-warmCream via-emeraldLight/60 to-warmCream rounded-t-sm shadow-xl border-b-8 border-deepEmerald flex items-center justify-center border-x-2 border-deepEmerald/20">
+                    <div class="w-full h-full border-t-2 border-dashed border-deepEmerald/30 flex justify-around items-center px-4">
+                        <span class="text-xs text-deepEmerald font-extrabold uppercase tracking-widest">Happy Birthday BILISE</span>
+                    </div>
+                </div>
+                <div class="w-72 md:w-80 h-4 bg-deepEmerald/20 rounded-full shadow-md"></div>
+                <div class="w-32 md:w-40 h-3 bg-deepEmerald/30 rounded-b-lg shadow-sm"></div>
+            </div>
+
+            <div class="mt-8 flex space-x-3 relative z-20">
+                <button onclick="blowAllCandles()" class="bg-deepEmerald text-warmCream hover:bg-emeraldHover px-6 py-2.5 rounded-full shadow-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center space-x-2 cursor-pointer active:scale-95 border border-champagneGold/40">
+                    <i class="fa-solid fa-wind text-champagneGold"></i>
+                    <span>Blow Out Candles</span>
+                </button>
+                <button onclick="rekindleCandles()" class="bg-warmCream text-deepEmerald border border-deepEmerald/30 hover:bg-emeraldLight px-4 py-2.5 rounded-full shadow-sm text-xs font-bold transition-all flex items-center space-x-1 cursor-pointer active:scale-95" title="Light Candles Again">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. MEMORY SHOWCASE SECTION WITH LIGHTBOX -->
+        <section id="memories" class="w-full max-w-4xl mx-auto space-y-6 scroll-mt-24">
+            <div class="text-center space-y-1">
+                <div class="flex justify-center items-center space-x-2 text-deepEmerald text-sm font-extrabold uppercase tracking-widest">
+                    <span class="text-champagneGold">❖</span>
+                    <span>PHOTO GALLERY</span>
+                    <span class="text-champagneGold">❖</span>
+                </div>
+                <h3 class="text-3xl font-serif text-deepEmerald font-bold">Moments & Vibes</h3>
+                <p class="text-xs text-deepEmerald/70 font-medium">Tap any photo to view full screen ✨</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+                <div onclick="openLightbox('bilise.jpg', 'Pure Sunshine — Great Energy')" class="polaroid-card bg-warmCream p-4 rounded-xl shadow-lg border-2 border-deepEmerald/15 transform -rotate-3 cursor-pointer relative group">
+                    <div class="w-full h-56 bg-emeraldLight rounded-lg flex items-center justify-center border border-deepEmerald/20 relative overflow-hidden">
+                        <img id="cardImg1" 
+                             src="bilise.jpg" 
+                             alt="Pure Sunshine" 
+                             class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                             style="filter: brightness(102%) contrast(105%) saturate(108%);">
+                        <div class="absolute inset-0 bg-deepEmerald/0 group-hover:bg-deepEmerald/20 transition-colors flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 bg-warmCream/95 text-deepEmerald px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow">Expand</span>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <p class="font-handwriting text-2xl text-deepEmerald">Radiant Energy</p>
+                        <p class="text-[11px] uppercase tracking-widest text-deepEmerald/60 font-semibold mt-0.5">Bright Presence</p>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('bilise1.jpg', 'Wonderful Vibe — Timeless Grace')" class="polaroid-card bg-warmCream p-4 rounded-xl shadow-xl border-4 border-deepEmerald transform rotate-2 cursor-pointer sm:translate-y-2 relative group">
+                    <div class="w-full h-60 bg-charcoal rounded-full flex items-center justify-center border-4 border-champagneGold relative overflow-hidden mx-auto shadow-md">
+                        <img id="cardImg2" 
+                             src="bilise1.jpg" 
+                             alt="Wonderful Vibe" 
+                             class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                             style="filter: grayscale(100%) contrast(118%) brightness(96%);">
+                    </div>
+                    <div class="pt-3 text-center">
+                        <p class="font-handwriting text-2xl text-deepEmerald">Great Style</p>
+                        <p class="text-[11px] uppercase tracking-widest text-deepEmerald/60 font-semibold mt-0.5">Wonderful Aura</p>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('bilise2.jpg', 'Wonderful Moments — Cherished Memories')" class="polaroid-card bg-warmCream p-4 rounded-xl shadow-lg border-2 border-deepEmerald/15 transform -rotate-2 cursor-pointer relative group">
+                    <div class="w-full h-56 bg-emeraldLight rounded-lg flex items-center justify-center border border-deepEmerald/20 relative overflow-hidden">
+                        <img id="cardImg3" 
+                             src="bilise2.jpg" 
+                             alt="Wonderful Moments" 
+                             class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                             style="filter: sepia(30%) contrast(108%) saturate(115%);">
+                        <div class="absolute inset-0 bg-deepEmerald/0 group-hover:bg-deepEmerald/20 transition-colors flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 bg-warmCream/95 text-deepEmerald px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow">Expand</span>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <p class="font-handwriting text-2xl text-deepEmerald">Awesome Vibe</p>
+                        <p class="text-[11px] uppercase tracking-widest text-deepEmerald/60 font-semibold mt-0.5">Cool Spirit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. NEW FEATURE: FIRST IMPRESSIONS & GREAT VIBES (Customized for newly met context) -->
+        <section id="reasons" class="w-full max-w-4xl mx-auto space-y-8 scroll-mt-24">
+            <div class="text-center space-y-2">
+                <span class="text-xs uppercase tracking-[0.25em] text-champagneGold font-extrabold">Getting To Know You</span>
+                <h3 class="text-3xl font-serif text-deepEmerald font-bold">What Stands Out Right Away</h3>
+                <p class="text-xs text-deepEmerald/70 max-w-md mx-auto">Even though we just started talking, these things already shine through</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="bg-warmCream p-6 rounded-2xl border border-deepEmerald/20 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-deepEmerald text-champagneGold flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-deepEmerald">Great Conversations</h4>
+                    <p class="text-xs text-charcoal/75 leading-relaxed mt-2">
+                        Talking to you is effortless, engaging, and always brings a good mood to the day.
+                    </p>
+                </div>
+
+                <div class="bg-warmCream p-6 rounded-2xl border border-deepEmerald/20 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-deepEmerald text-champagneGold flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-face-smile-beam"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-deepEmerald">Wonderful Energy</h4>
+                    <p class="text-xs text-charcoal/75 leading-relaxed mt-2">
+                        Your positivity and vibrant personality make every interaction memorable and fun.
+                    </p>
+                </div>
+
+                <div class="bg-warmCream p-6 rounded-2xl border border-deepEmerald/20 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-deepEmerald text-champagneGold flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-deepEmerald">Unique Presence</h4>
+                    <p class="text-xs text-charcoal/75 leading-relaxed mt-2">
+                        You have a distinct sense of style and character that instantly leaves a great impression.
+                    </p>
+                </div>
+
+                <div class="bg-warmCream p-6 rounded-2xl border border-deepEmerald/20 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-deepEmerald text-champagneGold flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-deepEmerald">Great Ambition</h4>
+                    <p class="text-xs text-charcoal/75 leading-relaxed mt-2">
+                        It's clear you have wonderful goals and a bright drive for whatever you set your mind to.
+                    </p>
+                </div>
+
+                <div class="bg-warmCream p-6 rounded-2xl border border-deepEmerald/20 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-deepEmerald text-champagneGold flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-deepEmerald">Fun Company</h4>
+                    <p class="text-xs text-charcoal/75 leading-relaxed mt-2">
+                        Whether sharing stories or casual banter, you make hanging out or chatting a treat.
+                    </p>
+                </div>
+
+                <div class="bg-warmCream p-6 rounded-2xl border border-deepEmerald/20 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-deepEmerald text-champagneGold flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-deepEmerald">Exciting Future</h4>
+                    <p class="text-xs text-charcoal/75 leading-relaxed mt-2">
+                        So glad our paths crossed when they did—looking forward to getting to know you more!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. NEW FEATURE: COMPLIMENT CHEST (Tap to uncover random nice notes) -->
+        <section id="compliments" class="w-full max-w-3xl mx-auto bg-deepEmerald text-warmCream rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-champagneGold/60 text-center space-y-6 scroll-mt-24">
+            <div class="space-y-2">
+                <span class="text-xs uppercase tracking-[0.25em] text-champagneGold font-extrabold">Daily Compliment Chest</span>
+                <h3 class="text-3xl font-serif font-bold">Tap To Open A Nice Note 🎁</h3>
+                <p class="text-xs text-warmCream/80 max-w-md mx-auto">
+                    Click the button below to draw a fresh compliment specially for your birthday!
+                </p>
+            </div>
+
+            <div class="bg-emeraldHover/80 border border-champagneGold/40 rounded-2xl p-6 min-h-[110px] flex items-center justify-center shadow-inner">
+                <p id="complimentDisplay" class="font-serif text-lg italic text-champagneGold tracking-wide">
+                    "Tap the button below to reveal your first birthday compliment!"
+                </p>
+            </div>
+
+            <button onclick="drawCompliment()" class="bg-champagneGold hover:bg-amber-500 text-charcoal px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer">
+                Draw Compliment ✨
+            </button>
+        </section>
+
+        <!-- 6. INTERACTIVE FLIP BIRTHDAY CARD -->
+        <section id="letter" class="w-full max-w-xl mx-auto flex flex-col items-center scroll-mt-24">
+            <span class="text-xs uppercase tracking-[0.25em] text-champagneGold font-extrabold">Birthday Note</span>
+            <h3 class="text-3xl font-serif text-deepEmerald font-bold mb-1 mt-1">A Special Message For You</h3>
+            <p class="text-xs text-deepEmerald/75 uppercase tracking-widest font-extrabold mb-6">Tap the envelope to open</p>
+
+            <div class="w-full h-80 sm:h-96 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                <div id="cardInner" class="relative w-full h-full duration-700 transform-style-3d shadow-xl rounded-2xl border-2 border-deepEmerald/30">
+                    
+                    <!-- Card Front -->
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-warmCream via-emeraldLight to-warmCream rounded-2xl p-8 flex flex-col justify-between items-center text-center backface-hidden border-2 border-warmCream shadow-inner">
+                        <div class="w-full flex justify-between items-center">
+                            <span class="text-deepEmerald font-serif italic tracking-wider font-semibold">For BILISE</span>
+                            <i class="fa-solid fa-heart text-deepEmerald text-xl animate-pulse"></i>
+                        </div>
+                        <div class="my-auto space-y-3">
+                            <div class="w-20 h-20 mx-auto rounded-full bg-deepEmerald text-warmCream border-2 border-champagneGold flex items-center justify-center text-3xl shadow-md">
+                                💌
+                            </div>
+                            <h4 class="text-2xl font-sans font-extrabold text-deepEmerald uppercase tracking-wider">Click to Read Card</h4>
+                            <p class="text-xs text-deepEmerald/70">A message filled with wishes just for you</p>
+                        </div>
+                        <div class="text-xs text-deepEmerald font-extrabold uppercase tracking-widest">Best Wishes 🌿</div>
+                    </div>
+
+                    <!-- Card Back / Inside Content -->
+                    <div class="absolute inset-0 w-full h-full bg-warmCream rounded-2xl p-6 sm:p-8 flex flex-col justify-between rotate-y-180 backface-hidden border-4 border-deepEmerald shadow-2xl text-left overflow-y-auto">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-deepEmerald/15 pb-2">
+                                <h4 class="font-handwriting text-3xl text-deepEmerald">Dear BILISE,</h4>
+                                <span class="text-xs text-deepEmerald/60 font-sans uppercase tracking-wider">November 19</span>
+                            </div>
+                            <p class="text-charcoal/85 text-sm leading-relaxed font-sans">
+                                Even though we only recently started talking, I wanted to put together something special to wish you an absolute happy birthday!
+                            </p>
+                            <p class="text-charcoal/85 text-sm leading-relaxed font-sans">
+                                I hope your day is filled with wonderful moments, great vibes, and that this new year of life brings you incredible success and happiness!
+                            </p>
+                        </div>
+                        <div class="mt-4 border-t border-deepEmerald/15 pt-3 flex justify-between items-end">
+                            <div>
+                                <p class="text-xs text-deepEmerald/60">Warmly,</p>
+                                <p class="font-handwriting text-2xl text-deepEmerald">Your Friend</p>
+                            </div>
+                            <span class="text-xl">🌿✨</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SURPRISE GIFT BOXES -->
+        <section class="w-full max-w-4xl mx-auto space-y-6">
+            <div class="text-center">
+                <span class="text-xs uppercase tracking-[0.25em] text-champagneGold font-extrabold">Curated Surprises</span>
+                <h3 class="text-3xl font-serif text-deepEmerald font-bold mt-1">Unwrap Birthday Surprises</h3>
+                <p class="text-xs text-deepEmerald/75 uppercase tracking-widest font-extrabold mt-1">Tap each gift box to reveal a special note</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="gift-box group bg-warmCream p-6 rounded-2xl shadow-md border-2 border-deepEmerald/20 hover:border-deepEmerald transition-all cursor-pointer relative overflow-hidden text-center" onclick="revealWish(this, 'May your coming year be filled with exciting adventures, great new connections, and wonderful achievements! ✈️✨')">
+                    <div class="gift-content transition-all duration-300">
+                        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🎁</div>
+                        <h4 class="font-bold text-deepEmerald text-xs uppercase tracking-wider">Gift #1</h4>
+                        <p class="text-xs text-deepEmerald/60 mt-1">Tap to open</p>
+                    </div>
+                    <div class="wish-revealed hidden absolute inset-0 bg-gradient-to-br from-deepEmerald to-[#1A564B] text-warmCream p-6 flex items-center justify-center text-sm font-bold leading-snug font-sans">
+                    </div>
+                </div>
+
+                <div class="gift-box group bg-warmCream p-6 rounded-2xl shadow-md border-2 border-deepEmerald/20 hover:border-deepEmerald transition-all cursor-pointer relative overflow-hidden text-center" onclick="revealWish(this, 'It is so awesome getting to talk to you—hope your birthday is just as amazing as your vibe! 🌿')">
+                    <div class="gift-content transition-all duration-300">
+                        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🎀</div>
+                        <h4 class="font-bold text-deepEmerald text-xs uppercase tracking-wider">Gift #2</h4>
+                        <p class="text-xs text-deepEmerald/60 mt-1">Tap to open</p>
+                    </div>
+                    <div class="wish-revealed hidden absolute inset-0 bg-gradient-to-br from-emeraldLight to-[#D3E7E3] text-deepEmerald p-6 flex items-center justify-center text-sm font-bold leading-snug font-sans border-2 border-deepEmerald">
+                    </div>
+                </div>
+
+                <div class="gift-box group bg-warmCream p-6 rounded-2xl shadow-md border-2 border-deepEmerald/20 hover:border-deepEmerald transition-all cursor-pointer relative overflow-hidden text-center" onclick="revealWish(this, 'May your birthday be packed with your favorite treats, great laughs, and endless celebration! 🎂🎉')">
+                    <div class="gift-content transition-all duration-300">
+                        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">⭐</div>
+                        <h4 class="font-bold text-deepEmerald text-xs uppercase tracking-wider">Gift #3</h4>
+                        <p class="text-xs text-deepEmerald/60 mt-1">Tap to open</p>
+                    </div>
+                    <div class="wish-revealed hidden absolute inset-0 bg-gradient-to-br from-[#0B2B26] to-deepEmerald text-warmCream p-6 flex items-center justify-center text-sm font-bold leading-snug font-sans">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Photo Lightbox Modal -->
+    <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 bg-charcoal/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div onclick="event.stopPropagation()" class="bg-warmCream p-4 rounded-2xl max-w-lg w-full border-4 border-champagneGold shadow-2xl text-center space-y-3 animate-popIn">
+            <img id="lightboxImg" src="" alt="Expanded Memory" class="w-full max-h-[70vh] object-contain rounded-xl bg-charcoal">
+            <p id="lightboxCaption" class="font-handwriting text-3xl text-deepEmerald"></p>
+            <button onclick="closeLightbox()" class="bg-deepEmerald text-warmCream px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest cursor-pointer">Close</button>
+        </div>
+    </div>
+
+    <!-- Wish Capsule Modal -->
+    <div id="wishModal" class="fixed inset-0 bg-charcoal/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-warmCream rounded-3xl p-8 max-w-sm w-full text-center space-y-4 border-4 border-deepEmerald shadow-2xl transform animate-popIn relative overflow-hidden">
+            <div class="w-16 h-16 mx-auto bg-deepEmerald text-warmCream rounded-full flex items-center justify-center shadow-lg animate-pulse border-2 border-champagneGold">
+                <span class="text-3xl">🌟</span>
+            </div>
+            <h4 class="text-2xl font-sans font-extrabold text-deepEmerald uppercase tracking-wider">Make a Wish</h4>
+            <p class="text-sm text-charcoal/80 leading-relaxed font-sans">
+                "May all your wildest dreams take flight, every goal you chase come into reach, and this year ahead be your happiest chapter yet!"
+            </p>
+            <button onclick="closeModal()" class="w-full bg-deepEmerald hover:bg-emeraldHover text-warmCream py-3 rounded-full text-xs font-extrabold uppercase tracking-widest shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer border border-champagneGold/40">
+                Send Wish To The Stars ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-20 text-center py-8 text-xs text-deepEmerald/70 border-t border-deepEmerald/15 mt-16 tracking-widest uppercase font-bold space-y-2">
+        <div>CELEBRATING BILISE • NOVEMBER 19</div>
+        <div class="text-[11px] text-deepEmerald/50">DESIGNED BY EMRAN PRODUCTION</div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Background Particle Canvas Animation ---
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random();
+                this.color = ['#113F37', '#2B6E62', '#C59B27', '#84A9A1'][Math.floor(Math.random() * 4)];
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+
+                this.opacity += (Math.random() - 0.5) * 0.02;
+                if (this.opacity < 0.15) this.opacity = 0.15;
+                if (this.opacity > 0.85) this.opacity = 0.85;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor((canvas.width * canvas.height) / 16000);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // --- 2. Interactive Clickable Balloons ---
+        function createBalloons() {
+            const container = document.getElementById('balloonContainer');
+            const colors = [
+                'rgba(17, 63, 55, 0.78)', 
+                'rgba(43, 110, 98, 0.72)', 
+                'rgba(250, 246, 240, 0.92)', 
+                'rgba(211, 231, 227, 0.85)'
+            ];
+
+            for (let i = 0; i < 9; i++) {
+                const balloon = document.createElement('div');
+                const size = Math.random() * 35 + 50; 
+                const left = Math.random() * 90;
+                const duration = Math.random() * 8 + 12;
+                const delay = Math.random() * 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                balloon.className = 'absolute rounded-full pointer-events-auto cursor-pointer animate-float transition-transform hover:scale-110 active:scale-90 z-10 border border-deepEmerald/20 shadow-md';
+                balloon.style.width = `${size}px`;
+                balloon.style.height = `${size * 1.2}px`;
+                balloon.style.left = `${left}%`;
+                balloon.style.bottom = `-120px`;
+                balloon.style.backgroundColor = color;
+                balloon.style.animationDuration = `${duration}s`;
+                balloon.style.animationDelay = `${delay}s`;
+                balloon.style.boxShadow = 'inset -5px -5px 10px rgba(17, 63, 55, 0.1)';
+
+                const tail = document.createElement('div');
+                tail.className = 'w-0.5 h-12 bg-deepEmerald/35 mx-auto pointer-events-none';
+                tail.style.marginTop = `${size * 1.2}px`;
+                balloon.appendChild(tail);
+
+                balloon.onclick = function(e) {
+                    e.stopPropagation();
+                    const rect = balloon.getBoundingClientRect();
+                    const originX = (rect.left + rect.width / 2) / window.innerWidth;
+                    const originY = (rect.top + rect.height / 2) / window.innerHeight;
+
+                    if (typeof confetti === 'function') {
+                        confetti({
+                            particleCount: 25,
+                            spread: 60,
+                            origin: { x: originX, y: originY },
+                            colors: ['#113F37', '#FAF6F0', '#C59B27']
+                        });
+                    }
+
+                    balloon.classList.add('balloon-pop');
+                    setTimeout(() => balloon.remove(), 280);
+                };
+
+                container.appendChild(balloon);
+            }
+        }
+        createBalloons();
+
+        // --- 3. Compliment Chest Drawer ---
+        const complimentsList = [
+            "\"You have such a warm and welcoming energy whenever we talk!\"",
+            "\"Your style and vibe are seriously top-tier! ✨\"",
+            "\"Talking to you always makes the day much brighter.\"",
+            "\"You bring such great positivity to every conversation!\"",
+            "\"It's so refreshing meeting someone as cool and genuine as you.\"",
+            "\"Wishing you a birthday that's just as amazing as your personality!\""
+        ];
+
+        function drawCompliment() {
+            const display = document.getElementById('complimentDisplay');
+            const randomMsg = complimentsList[Math.floor(Math.random() * complimentsList.length)];
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = randomMsg;
+                display.style.opacity = 1;
+            }, 200);
+            window.fireConfetti();
+        }
+
+        // --- 4. Photo Lightbox ---
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').innerText = caption;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // --- 5. Global Event Handlers ---
+        window.fireConfetti = function() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 90,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ['#113F37', '#FAF6F0', '#C59B27', '#2B6E62']
+                });
+
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 60,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 },
+                        colors: ['#113F37', '#FAF6F0', '#C59B27']
+                    });
+                }, 200);
+
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 60,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 },
+                        colors: ['#113F37', '#FAF6F0', '#C59B27']
+                    });
+                }, 350);
+            }
+        };
+
+        let litCandlesCount = 5;
+
+        window.extinguishCandle = function(element) {
+            const flameContainer = element.querySelector('.flame-container');
+            if (flameContainer && flameContainer.querySelector('.flame')) {
+                flameContainer.innerHTML = '<div class="smoke w-2 h-4 bg-deepEmerald/40 rounded-full mx-auto"></div>';
+                litCandlesCount--;
+
+                if (litCandlesCount === 0) {
+                    triggerCelebration();
+                }
+            }
+        };
+
+        window.blowAllCandles = function() {
+            const candles = document.querySelectorAll('.candle');
+            candles.forEach(candle => window.extinguishCandle(candle));
+        };
+
+        window.rekindleCandles = function() {
+            const candles = document.querySelectorAll('.candle');
+            litCandlesCount = candles.length;
+            candles.forEach(candle => {
+                const flameContainer = candle.querySelector('.flame-container');
+                flameContainer.innerHTML = '<div class="flame w-3.5 h-5 animate-flicker"></div>';
+            });
+            document.getElementById('cakeInstruction').innerText = "Click each candle to blow it out or tap \"Blow Out Candles\"";
+        };
+
+        function triggerCelebration() {
+            document.getElementById('cakeInstruction').innerText = "🎉 All Wishes Sent to the Stars! Happy Birthday BILISE! 🎉";
+            window.fireConfetti();
+            setTimeout(() => {
+                const modal = document.getElementById('wishModal');
+                if (modal) modal.classList.remove('hidden');
+            }, 500);
+        }
+
+        window.closeModal = function() {
+            const modal = document.getElementById('wishModal');
+            if (modal) modal.classList.add('hidden');
+            window.fireConfetti();
+        };
+
+        window.toggleCard = function() {
+            const cardInner = document.getElementById('cardInner');
+            if (cardInner) {
+                cardInner.classList.toggle('rotate-y-180');
+            }
+        };
+
+        window.revealWish = function(element, wishText) {
+            const content = element.querySelector('.gift-content');
+            const revealed = element.querySelector('.wish-revealed');
+
+            if (revealed && content) {
+                if (revealed.classList.contains('hidden')) {
+                    revealed.innerText = wishText;
+                    revealed.classList.remove('hidden');
+                    content.classList.add('opacity-0');
+                    window.fireConfetti();
+                } else {
+                    revealed.classList.add('hidden');
+                    content.classList.remove('opacity-0');
+                }
+            }
+        };
+
+        window.onload = function() {
+            setTimeout(() => {
+                window.fireConfetti();
+            }, 600);
+        };
+    </script>
+</body>
+</html>
